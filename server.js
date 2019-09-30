@@ -12,7 +12,9 @@ app.use(express.json());
 app.use('/', indexRouter);
 app.use('/index', routes);
 
+publicDir = path.join(__dirname);
 app.use(express.static(publicDir))
+app.use(express.static(path.join(__dirname, '/images')));
 
 app.listen(port);
 module.exports = app;
