@@ -5,6 +5,6 @@ const fs   = require('fs');
 let ft = yaml.safeLoad(fs.readFileSync('base/00', 'utf8'));
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {name: ft[0][1][1]});
+  res.render('index', {'Marat!'});
 });
 module.exports = router;
