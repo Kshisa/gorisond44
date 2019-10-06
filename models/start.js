@@ -22,6 +22,5 @@ module.exports = foto = () => {
              [ur+5, ft[ur+5][0][0]], [ur+6, ft[ur+6][0][0]], [ur+7, ft[ur+7][0][0]], [ur+8, ft[ur+8][0][0]], [ur+9, ft[ur+9][0][0]],
              [ur-5, ft[ur-5][0][0]], [ur-4, ft[ur-4][0][0]], [ur-3, ft[ur-3][0][0]], [ur-2, ft[ur-2][0][0]], [ur-1, ft[ur-1][0][0]]]
     }
-    console.log(doc);
   return doc
 }

@@ -2,8 +2,8 @@ const yaml = require('js-yaml');
 const fs   = require('fs');
 
 module.exports = foto = () => {
-  let ft = yaml.safeLoad(fs.readFileSync('../../Base/00', 'utf8'));
-  let sd = yaml.safeLoad(fs.readFileSync('../../User/1', 'utf8'));
+  let ft = yaml.safeLoad(fs.readFileSync('base/00', 'utf8'));
+  let sd = yaml.safeLoad(fs.readFileSync('base/1',  'utf8'));
   var ur = sd[0];
   var ln = ft.length;
   if (ur === 0) {
@@ -24,6 +24,6 @@ module.exports = foto = () => {
            [ur -  6, ft[ur - 6][0][0]]];
     sd[0] = sd[0] - 5;
   }
-  fs.writeFile('/home/marat/User/1', yaml.safeDump(sd), 'utf8', err => {if (err) console.log(err) })
+  fs.writeFile('base/1', yaml.safeDump(sd), 'utf8', err => {if (err) console.log(err) })
   return doc
 }
