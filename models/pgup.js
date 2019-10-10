@@ -1,9 +1,11 @@
 const yaml = require('js-yaml');
 const fs   = require('fs');
+var Client = require('node-rest-client').Client;
+var client = new Client();
 
 module.exports = foto = () => {
   let ft = yaml.safeLoad(fs.readFileSync('base/00', 'utf8'));
-  let sd = yaml.safeLoad(fs.readFileSync('base/1',  'utf8'));
+  let sd = 0;
   let ln = ft.length;
   let ur = sd[0];
   if (ur === (ln - 10)) {
@@ -24,6 +26,11 @@ module.exports = foto = () => {
            [ur + 14, ft[ur + 14][0][0]]];
     sd[0] = sd[0] + 5;
   }
-  fs.writeFile('base/1', yaml.safeDump(sd), 'utf8', err => {if (err) console.log(err) })
+  var args = {
+    data: { user: sd },
+    headers: { "Content-Type": "application/json" }
+  }
+  client.put("http://kshisa.ru/rest/thing", args)
+
   return doc
 }
