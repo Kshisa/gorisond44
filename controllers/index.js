@@ -10,10 +10,10 @@ router.get('/start', (req, res) => {
   res.json(start())
 });
 router.get('/pgup', (req, res) => {
-  res.json(pgup())
+  res.json(pgup(req))
 });
 router.get('/pgdn', (req, res) => {
-  res.json(pgdn())
+  res.json(pgdn(req))
 });
 router.get('/card', (req, res) => {
   res.json(card(req))
