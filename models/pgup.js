@@ -7,7 +7,7 @@ let sd, doc
 module.exports = foto = (req) => {
   sd = Number(req.query.hide)
   console.log(sd)
-  let ft = yaml.safeLoad(fs.readFileSync('../Base/00', 'utf8'));
+  let ft = yaml.safeLoad(fs.readFileSync('./base/00', 'utf8'));
   let ln = ft.length;
   let ur = sd
   if (ur === (ln - 10)) {

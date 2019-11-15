@@ -3,7 +3,7 @@ const fs   = require('fs');
 var Client = require('node-rest-client').Client;
 var client = new Client();
 let sd, doc, ur
-let ft = yaml.safeLoad(fs.readFileSync('../Base/00', 'utf8'));
+let ft = yaml.safeLoad(fs.readFileSync('./base/00', 'utf8'));
 let ln = ft.length;
 
 client.get("http://kshisa.ru/rest/thing", function (data, response) {

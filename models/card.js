@@ -11,7 +11,7 @@ client.get("http://kshisa.ru/rest/thing", function (data, response) {
   console.log(sd)
 })
 module.exports = foto = (req) => {
-  let ft = yaml.safeLoad(fs.readFileSync('../Base/00', 'utf8'));
+  let ft = yaml.safeLoad(fs.readFileSync('./base/00', 'utf8'));
   var numb = Number(req.query.numb || sd)
   let x = 0
   let y = []
