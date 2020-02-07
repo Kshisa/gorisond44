@@ -11,15 +11,56 @@ client.get("http://kshisa.ru/rest/thing", function (data, response) {
   console.log(sd)
 })
 module.exports = foto = (req) => {
-  let ft = yaml.safeLoad(fs.readFileSync('./base/00', 'utf8'));
-  var numb = Number(req.query.numb || sd)
+  let ft = yaml.safeLoad(fs.readFileSync('./base/0', 'utf8', (err) => {
+    if (err) {
+      return console.log(err);
+    }
+  }))
+  let numb = Number(req.query.numb || sd)
+
   let x = 0
-  let y = []
-  ft[numb][6].forEach(function(el){
-    y[x] = ' genre: ' + el
-    console.log(y[x])
-    ++x
+  let xx = 0
+  let y = [ 7, 8, 9, 10, 11 ]
+  let z = []
+  y.forEach(function(el){
+    ft[numb][el].forEach(function(){
+      z[xx] = [
+            ft[0][el][2],
+            ft[numb][el][x][3],
+            ft[numb][el][x][2]
+          ]
+      ++x
+      ++xx
+    })
+    x = 0
   })
-  return [[ft[numb][0][0]],[ft[numb][1][0]], [ft[numb][1][1]], [ft[numb][2][0]/10], [ft[numb][3][0]],
-  [ft[numb][4][0]],[ft[numb][5]],[y],[ft[numb][7]],[ft[numb][8]]]
+  x = 0
+  xx = 0
+  y = [ 5, 6 ]
+  let zz = []
+  y.forEach(function(el){
+    ft[numb][el].forEach(function(){
+      zz[xx] = [
+            ft[0][el][2],
+            ft[numb][el][x][3],
+            ft[numb][el][x][1]
+          ]
+      ++x
+      ++xx
+    })
+    x = 0
+  })
+
+  let card = [ft[numb][0][0],
+              ft[numb][1][0],
+              ft[numb][1][1], 
+              ft[numb][2][0]/10, 
+              ft[numb][3][0],
+              ft[numb][4][0],
+              zz,
+              z,
+              ft[numb][0][2]
+            ]
+  console.log(card)
+  return card 
 }

@@ -1,0 +1,23 @@
+---
+- - - code
+    - 1
+    - 2 
+    - 'IMDb(.*?\n?.*?)}]}}}'
+    - '.*?(https://pic.kino.mail.ru\/\d+\/)'
+    - - 'https://afisha.mail.ru/search/?region_id=42&q=' 
+      - 'https://kino.mail.ru/cinema/movies/' 
+      - '/(\d+)/.*?movies/(.*?)/.*?'
+      - 'https://pic.afisha.mail.ru/'    
+  - [name,   1, 2, 'text text_light_promo(.*?)p-commercial', '">(.*?)</h'                                          ]
+  - [reit,   1, 1, 'IMDb(.*?)Toggle',                        '10">(.*?)</',                                         '(\d+).(\d+)',   [10, 0]]
+  - [year,   2, 1, 'class="margin_bottom_20(.*?)/a></span>', 'all/.*?/">(.*?)<',                                    '(\d+)',         [1, 0] ]
+  - [time,   1, 1, 'photo photo_full(.*?)badge_gray',        '\d+</a>.*?nowrap">(.*?)<',                            '(\d+)\D+(\d+)', [60, 0]]
+  - [coun,   2, 5, 'Страна(.*?)Продюсер',                    '<a class="" href="/cinema/all/.*?>(.*?)</'           ]
+  - [genr,   2, 5, 'IMDb(.*?)Подробнее',                     'badge_link.*?<span class="badge__text">(.*?)<'       ]
+  - [Dirr,   1, 2, 'Режиссер(.*?)В ролях',                   '<a class="" href="/person/.*?/">(.*?)</'             ]
+  - [actr,   1, 9, 'В ролях(.*?)Страна',                     '<a class="" href="/person/.*?/">(.*?)</'             ]
+  - [prod,   1, 2, 'Продюсер(.*?)Сценарий',                  '<a class="" href="/person/.*?/">(.*?)</'             ]
+  - [scen,   1, 2, 'Сценарий(.*?)Оператор',                  '<a class="" href="/person/.*?/">(.*?)</'             ]
+  - [oper,   1, 2, 'Оператор(.*?)Композитор',                '<a class="" href="/person/.*?/">(.*?)</'             ]
+  - [comp,   1, 2, 'Композитор(.*?)Возрастные',              '<a class="" href="/person/.*?/">(.*?)</'             ]
+  - [review, 3, 1, 'Сюжет фильма(.*?\n?.*?)Режиссер',        'light_medium text_fixed valign_baseline"><p>(.*?)</' ]

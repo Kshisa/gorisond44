@@ -7,7 +7,7 @@ let sd, doc
 module.exports = foto = (req) => {
   sd = Number(req.query.hide)
   console.log(sd)
-  let ft = yaml.safeLoad(fs.readFileSync('./base/00', 'utf8'));
+  let ft = yaml.safeLoad(fs.readFileSync('./base/0', 'utf8'));
   let ln = ft.length;
   let ur = sd
   if (ur === (ln - 10)) {
@@ -21,7 +21,7 @@ module.exports = foto = (req) => {
           ]
   }
   else if (ur === (ln - 5)) {
-    sd = 0
+    sd = 1
     doc = [[sd],
            [[5, ft[5][0][0]],
             [6, ft[6][0][0]],
