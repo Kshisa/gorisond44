@@ -25,7 +25,7 @@ module.exports = foto = (req) => {
   y.forEach(function(el){
     ft[numb][el].forEach(function(){
       z[xx] = [
-            ft[0][el][2],
+            ft[0][el][3],
             ft[numb][el][x][3],
             ft[numb][el][x][2]
           ]
@@ -35,29 +35,25 @@ module.exports = foto = (req) => {
     x = 0
   })
   x = 0
-  xx = 0
-  y = [ 5, 6 ]
-  let zz = []
-  y.forEach(function(el){
-    ft[numb][el].forEach(function(){
-      zz[xx] = [
-            ft[0][el][2],
-            ft[numb][el][x][3],
-            ft[numb][el][x][1]
-          ]
-      ++x
-      ++xx
-    })
-    x = 0
+  let billCoun = []
+  let billGenr = []
+  ft[numb][5].forEach(function(el){
+    billCoun[x] = el[1]
+    ++x
   })
-
+  x = 0
+  ft[numb][6].forEach(function(el){
+    billGenr[x] = el[1]
+    ++x
+  })  
   let card = [ft[numb][0][0],
               ft[numb][1][0],
               ft[numb][1][1], 
               ft[numb][2][0]/10, 
               ft[numb][3][0],
               ft[numb][4][0],
-              zz,
+              billCoun,
+              billGenr,
               z,
               ft[numb][0][2]
             ]
