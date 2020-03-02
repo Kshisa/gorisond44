@@ -2,26 +2,28 @@ const yaml = require('js-yaml');
 const fs   = require('fs');
 var Client = require('node-rest-client').Client;
 var client = new Client();
-let sd, rd
-let doc = []
+  let user, sd, rd
+  let doc = []
 
-let ft = yaml.safeLoad(fs.readFileSync('./base/0', 'utf8', (err) => {
-  if (err) {
-    return console.log(err);
-  }
-}))
-let ft4 = yaml.safeLoad(fs.readFileSync('./base/4', 'utf8', (err) => {
-  if (err) {
-    return console.log(err);
-  }
-}))
-let ln = ft.length;
-let ln4 = ft4.length;
+client.get("http://kshisa.ru/rest/thing", function (data) {
+  user = data.user
+  console.log(user);
+  sd = Number(user[0][0])
+  rd = Number(user[0][4])
+  let dba0 = data.dba0
 
-client.get("http://kshisa.ru/rest/thing", function (data, response, err) {
-  // parsed response body as js object
-  sd = Number(data.user)
-  rd = Number(data.anim)
+  let ft = yaml.safeLoad(fs.readFileSync('./base/0', 'utf8', (err) => {
+    if (err) {
+      return console.log(err);
+    }
+  }))
+  let ft4 = yaml.safeLoad(fs.readFileSync('./base/4', 'utf8', (err) => {
+    if (err) {
+      return console.log(err);
+    }
+  }))
+  let ln = ft.length;
+  let ln4 = ft4.length;
   if (sd === 1) {
       doc[0] = [sd]
       doc[1] = [[1,    ft[1][0][0]],    [2,    ft[2][0][0]], 
@@ -46,7 +48,7 @@ client.get("http://kshisa.ru/rest/thing", function (data, response, err) {
     }
     else {
       doc[0] = [sd]
-      doc[1] = [[sd,   ft[sd  ][0][0]], [sd+1, ft[sd+1][0][0]], 
+      doc[1] = [[sd,   dba0[0][sd][0][0]], [sd+1, dba0[0][sd+1][0][0]], 
                 [sd+2, ft[sd+2][0][0]], [sd+3, ft[sd+3][0][0]], 
                 [sd+4, ft[sd+4][0][0]], [sd+5, ft[sd+5][0][0]], 
                 [sd+6, ft[sd+6][0][0]], [sd+7, ft[sd+7][0][0]], 
@@ -90,6 +92,6 @@ client.get("http://kshisa.ru/rest/thing", function (data, response, err) {
     }
     console.log(doc) 
 })
-module.exports = foto = () => {
+module.exports = start = () => {
   return doc
 }
